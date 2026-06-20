@@ -46,7 +46,7 @@ export default function Contact() {
   const inputClass = (field: string) =>
     `w-full bg-white dark:bg-black border ${
       errors[field] ? "border-red-500" : "border-black/15 dark:border-white/15"
-    } px-4 py-3 text-sm text-black dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:border-[#5711C5] transition-colors`
+    } px-4 py-3 text-sm text-black dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:border-[#5711C5] transition-colors rounded-sm`
 
   return (
     <section id="contact" className="py-28 bg-white dark:bg-black">
@@ -96,7 +96,7 @@ export default function Contact() {
           </div>
 
           {/* Right Form */}
-          <div className="lg:col-span-8 border border-black/10 dark:border-white/10 p-8">
+          <div className="lg:col-span-8 border border-black/10 dark:border-white/10 p-8 rounded-sm">
             <AnimatePresence mode="wait">
               {!isSuccess ? (
                 <motion.form
@@ -143,7 +143,7 @@ export default function Contact() {
                       name="service"
                       value={formData.service}
                       onChange={handleChange}
-                      className="w-full bg-white dark:bg-black border border-black/15 dark:border-white/15 px-4 py-3 text-sm text-black dark:text-white focus:outline-none focus:border-[#5711C5] transition-colors"
+                      className="w-full bg-white dark:bg-black border border-black/15 dark:border-white/15 px-4 py-3 text-sm text-black dark:text-white focus:outline-none focus:border-[#5711C5] transition-colors rounded-sm"
                     >
                       <option>Web Development</option>
                       <option>SEO Optimization</option>
@@ -170,7 +170,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 text-sm font-semibold text-white flex items-center justify-center space-x-2 disabled:opacity-50 transition-opacity"
+                    className="w-full py-4 text-sm font-semibold text-white flex items-center justify-center space-x-2 disabled:opacity-50 transition-opacity rounded-sm"
                     style={{ backgroundColor: "#5711C5" }}
                   >
                     {isSubmitting ? (
@@ -202,7 +202,7 @@ export default function Contact() {
                   </p>
                   <button
                     onClick={() => setIsSuccess(false)}
-                    className="mt-2 text-sm font-semibold border border-black/20 dark:border-white/20 px-6 py-2.5 text-black dark:text-white"
+                    className="mt-2 text-sm font-semibold border border-black/20 dark:border-white/20 px-6 py-2.5 text-black dark:text-white rounded-sm"
                   >
                     Send Another
                   </button>

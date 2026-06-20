@@ -1,7 +1,14 @@
-import React from "react"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
-import heroDashboard from "../assets/hero_dashboard.png"
+import HeroIllustration from "./HeroIllustration"
+
+const floatingOrbs = [
+  { size: 300, x: "10%", y: "20%", delay: 0, duration: 8, opacity: 0.08 },
+  { size: 200, x: "75%", y: "10%", delay: 2, duration: 10, opacity: 0.06 },
+  { size: 250, x: "60%", y: "70%", delay: 4, duration: 9, opacity: 0.05 },
+  { size: 150, x: "20%", y: "60%", delay: 1, duration: 7, opacity: 0.07 },
+  { size: 180, x: "85%", y: "50%", delay: 3, duration: 11, opacity: 0.04 },
+]
 
 export default function Hero() {
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -20,6 +27,36 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex flex-col justify-center pt-24 pb-16 bg-black overflow-hidden"
     >
+      {/* Animated background orbs */}
+      <div className="absolute inset-0 pointer-events-none">
+        {floatingOrbs.map((orb, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              width: orb.size,
+              height: orb.size,
+              left: orb.x,
+              top: orb.y,
+              background:
+                "radial-gradient(circle, rgba(87,17,197,0.3) 0%, rgba(87,17,197,0) 70%)",
+              opacity: orb.opacity,
+            }}
+            animate={{
+              y: [0, -30, 0, 20, 0],
+              x: [0, 15, -10, 5, 0],
+              scale: [1, 1.05, 0.95, 1.02, 1],
+            }}
+            transition={{
+              duration: orb.duration,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: orb.delay,
+            }}
+          />
+        ))}
+      </div>
+
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
         {/* Left: Content */}
@@ -40,7 +77,7 @@ export default function Hero() {
           {/* Headline */}
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.0] tracking-tight text-white">
             We Build{" "}
-            <br />
+           
             <span style={{ color: "#5711C5" }}>Digital</span>
             <br />
             Experiences.
@@ -84,39 +121,14 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Right: Mockup */}
+        {/* Right: Illustration */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="relative"
         >
-            <div className="border border-white/10 overflow-hidden rounded-sm">
-              {/* Browser chrome */}
-              <div className="flex items-center space-x-1.5 px-4 py-3 border-b border-white/10 bg-white/5">
-                <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
-                <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
-                <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
-              </div>
-              <img
-                src={heroDashboard}
-                alt="webZ Creations Dashboard"
-                className="w-full h-auto object-cover rounded-sm"
-              />
-            </div>
-
-          {/* Floating badge */}
-          <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -bottom-5 -left-5 bg-white px-4 py-3 hidden sm:flex items-center space-x-3"
-          >
-            <div className="w-2 h-8" style={{ backgroundColor: "#5711C5" }} />
-            <div>
-              <p className="text-xs text-black/50">Delivery Rate</p>
-              <p className="text-sm font-black text-black">100% On‑Time</p>
-            </div>
-          </motion.div>
+          <HeroIllustration />
         </motion.div>
       </div>
     </section>
