@@ -1,123 +1,176 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-  e.preventDefault()
-  const element = document.getElementById(targetId)
-  if (element) {
-    const offset = 80
-    const bodyRect = document.body.getBoundingClientRect().top
-    const elementRect = element.getBoundingClientRect().top
-    window.scrollTo({ top: elementRect - bodyRect - offset, behavior: "smooth" })
-  }
-}
+const handleScroll = (
+	e: React.MouseEvent<HTMLAnchorElement>,
+	targetId: string,
+) => {
+	e.preventDefault();
+	const element = document.getElementById(targetId);
+	if (element) {
+		const offset = 80;
+		const bodyRect = document.body.getBoundingClientRect().top;
+		const elementRect = element.getBoundingClientRect().top;
+		window.scrollTo({
+			top: elementRect - bodyRect - offset,
+			behavior: "smooth",
+		});
+	}
+};
 
 const footerLinks = [
-  { label: "Home", href: "home" },
-  { label: "Services", href: "services" },
-  { label: "Portfolio", href: "portfolio" },
-  { label: "About", href: "about" },
-  { label: "Contact", href: "contact" },
-]
+	{ label: "Home", href: "home" },
+	{ label: "Services", href: "services" },
+	{ label: "Portfolio", href: "portfolio" },
+	{ label: "About", href: "about" },
+	{ label: "Contact", href: "contact" },
+	{ label: "Privacy Policy", href: "privacy" },
+	{ label: "Terms & Conditions", href: "terms" },
+];
 
 const services = [
-  "Website Development",
-  "SEO Optimization",
-  "App Engineering",
-  "CRM Automations",
-  "UI/UX Strategy",
-]
+	"Website Development",
+	"SEO Optimization",
+	"App Engineering",
+	"CRM Automations",
+	"UI/UX Strategy",
+];
 
 export default function Footer() {
-  const [email, setEmail] = useState("")
-  const [success, setSuccess] = useState(false)
+	const [email, setEmail] = useState("");
+	const [success, setSuccess] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!email.trim() || !email.includes("@")) return
-    setSuccess(true)
-    setTimeout(() => {
-      setEmail("")
-      setSuccess(false)
-    }, 3000)
-  }
+	const handleSubscribe = (e: React.FormEvent) => {
+		e.preventDefault();
+		if (!email.trim() || !email.includes("@")) return;
+		setSuccess(true);
+		setTimeout(() => {
+			setEmail("");
+			setSuccess(false);
+		}, 3000);
+	};
 
-  return (
-    <footer className="bg-black text-white border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-12 gap-12">
+	return (
+		<footer className='bg-black text-white border-t border-white/10'>
+			<div className='max-w-7xl mx-auto px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-12 gap-12'>
+				{/* Brand */}
+				<div className='md:col-span-4 space-y-5'>
+					<a
+						href='#home'
+						onClick={(e) => handleScroll(e, "home")}
+						className='flex items-center'
+					>
+						<img
+							src='/logoWithBackground.svg'
+							alt='webZ Creations'
+							className='h-24 w-auto'
+						/>
+					</a>
+					<p className='text-sm text-white/40 leading-relaxed max-w-xs'>
+						A digital design and software development studio engineering
+						responsive products, SEO models, and native apps.
+					</p>
 
-        {/* Brand */}
-        <div className="md:col-span-4 space-y-5">
-          <a
-            href="#home"
-            onClick={(e) => handleScroll(e, "home")}
-            className="flex items-center space-x-2"
-          >
-            <span className="font-black text-2xl tracking-tight text-white">
-              web<span style={{ color: "#5711C5" }}>Z</span>
-            </span>
-            <span className="font-light text-sm text-white/40 tracking-widest uppercase">
-              Creations
-            </span>
-          </a>
-          <p className="text-sm text-white/40 leading-relaxed max-w-xs">
-            A digital design and software development studio engineering responsive products, SEO models, and native apps.
-          </p>
+					{/* Social Icons */}
+					<div className='flex space-x-4 pt-2'>
+						{[
+							{
+								label: "Twitter",
+								path: "M4 4l11.733 16h4.267l-11.733 -16zM4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772",
+							},
+							{
+								label: "GitHub",
+								path: "M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22",
+							},
+							{
+								label: "LinkedIn",
+								path: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z",
+							},
+						].map(({ label, path }) => (
+							<a
+								key={label}
+								href='#'
+								className='text-white/30 hover:text-white transition-colors'
+							>
+								<svg
+									className='h-4 w-4'
+									viewBox='0 0 24 24'
+									fill='none'
+									stroke='currentColor'
+									strokeWidth='2'
+									strokeLinecap='round'
+									strokeLinejoin='round'
+								>
+									<path d={path} />
+								</svg>
+								<span className='sr-only'>{label}</span>
+							</a>
+						))}
+					</div>
+				</div>
 
-          {/* Social Icons */}
-          <div className="flex space-x-4 pt-2">
-            {[
-              { label: "Twitter", path: "M4 4l11.733 16h4.267l-11.733 -16zM4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" },
-              { label: "GitHub", path: "M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" },
-              { label: "LinkedIn", path: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" },
-            ].map(({ label, path }) => (
-              <a key={label} href="#" className="text-white/30 hover:text-white transition-colors">
-                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d={path} />
-                </svg>
-                <span className="sr-only">{label}</span>
-              </a>
-            ))}
-          </div>
-        </div>
+				{/* Nav Links */}
+				<div className='md:col-span-2 space-y-4'>
+					<h4 className='text-xs font-bold uppercase tracking-[0.15em] text-white/30'>
+						Sitemap
+					</h4>
+					<ul className='space-y-2.5'>
+						{footerLinks.map((link) => (
+							<li key={link.href}>
+								{link.href === "privacy" || link.href === "terms" ? (
+									<Link
+										to={link.href === "privacy" ? "/privacy" : "/terms"}
+										className='text-sm text-white/50 hover:text-white transition-colors'
+									>
+										{link.label}
+									</Link>
+								) : (
+									<a
+										href={`#${link.href}`}
+										onClick={(e) => handleScroll(e, link.href)}
+										className='text-sm text-white/50 hover:text-white transition-colors'
+									>
+										{link.label}
+									</a>
+								)}
+							</li>
+						))}
+					</ul>
+				</div>
 
-        {/* Nav Links */}
-        <div className="md:col-span-2 space-y-4">
-          <h4 className="text-xs font-bold uppercase tracking-[0.15em] text-white/30">Sitemap</h4>
-          <ul className="space-y-2.5">
-            {footerLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={`#${link.href}`}
-                  onClick={(e) => handleScroll(e, link.href)}
-                  className="text-sm text-white/50 hover:text-white transition-colors"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+				{/* Services */}
+				<div className='md:col-span-3 space-y-4'>
+					<h4 className='text-xs font-bold uppercase tracking-[0.15em] text-white/30'>
+						Services
+					</h4>
+					<ul className='space-y-2.5'>
+						{services.map((s) => (
+							<li key={s} className='text-sm text-white/50'>
+								{s}
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
 
-        {/* Services */}
-        <div className="md:col-span-3 space-y-4">
-          <h4 className="text-xs font-bold uppercase tracking-[0.15em] text-white/30">Services</h4>
-          <ul className="space-y-2.5">
-            {services.map((s) => (
-              <li key={s} className="text-sm text-white/50">{s}</li>
-            ))}
-          </ul>
-        </div>
-
-      </div>
-
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10 max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/30">
-        <p>© {new Date().getFullYear()} webZ Creations. All rights reserved.</p>
-        <div className="flex space-x-6">
-          <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-        </div>
-      </div>
-    </footer>
-  )
+			{/* Bottom Bar */}
+			<div className='border-t border-white/10 max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/30'>
+				<p>© {new Date().getFullYear()} webZ Creations. All rights reserved.</p>
+				<div className='flex space-x-6'>
+					<Link
+						to="/privacy"
+						className='hover:text-white transition-colors'
+					>
+						Privacy Policy
+					</Link>
+					<Link
+						to="/terms"
+						className='hover:text-white transition-colors'
+					>
+						Terms of Service
+					</Link>
+				</div>
+			</div>
+		</footer>
+	);
 }

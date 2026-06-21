@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Sun, Moon, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
+import { useIsMobile } from "../hooks/use-is-mobile"
 
 
 const navLinks = [
@@ -13,15 +14,9 @@ const navLinks = [
 
 export default function Navbar() {
 
+  const isMobile = useIsMobile()
   const [activeSection, setActiveSection] = useState("home")
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -53,22 +48,19 @@ export default function Navbar() {
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-          scrolled
-            ? "bg-white border-b border-black/10 py-3 text-black"
-            : "bg-black py-5 text-white"
-        } rounded-sm`}
-      >
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-black/10 py-5 text-black rounded-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between rounded-sm">
           {/* Logo */}
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, "home")}
-            className="flex items-center space-x-2"
+            className="flex items-center"
           >
-            <span className={`font-black text-2xl tracking-tight ${scrolled ? "text-black" : "text-white"}`}>web<span style={{ color: "#5711C5" }}>Z</span></span>
-            <span className={`font-light text-sm ${scrolled ? "text-black/40" : "text-white/40"} tracking-widest uppercase`}>Creations</span>
+            <img
+              src={isMobile ? "/onlyLogo.svg" : "/logoWithName.svg"}
+              alt="webZ Creations"
+              className="h-8 w-auto"
+            />
           </a>
 
           {/* Desktop Nav */}
@@ -78,8 +70,8 @@ export default function Navbar() {
                 key={link.href}
                 href={`#${link.href}`}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`text-sm font-medium tracking-wide transition-colors ${scrolled ? (activeSection === link.href ? "text-black" : "text-black/40") : (activeSection === link.href ? "text-white" : "text-white/40")}`}
-                style={activeSection === link.href ? { color: "#5711C5" } : {}}
+                className="text-sm font-medium tracking-wide transition-colors"
+                style={activeSection === link.href ? { color: "#5711C5" } : { color: "inherit" }}
               >
                 {link.name}
               </a>
@@ -87,22 +79,24 @@ export default function Navbar() {
           </nav>
 
           {/* Right Actions */}
-          <div className="overflow-hidden rounded-sm">
-            <a href="#contact" onClick={(e) => handleNavClick(e, "contact")}>
-                <button
-                  className="text-sm font-semibold px-5 py-2 text-white transition-opacity rounded-sm"
-                  style={{ backgroundColor: "#5711C5" }}
-                >
-                  Get Started
-                </button>
-            </a>
-          </div>
+          {!isMobile && (
+            <div className="overflow-hidden rounded-sm">
+              <a href="#contact" onClick={(e) => handleNavClick(e, "contact")}>
+                  <button
+                    className="text-sm font-semibold px-5 py-2 text-white transition-opacity rounded-sm"
+                    style={{ backgroundColor: "#5711C5" }}
+                  >
+                    Get Started
+                  </button>
+              </a>
+            </div>
+          )}
 
           {/* Mobile Buttons */}
           <div className="flex md:hidden items-center space-x-2">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-black dark:text-white p-2"
+              className="text-black p-2"
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -118,19 +112,15 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.15 }}
-            className="fixed inset-x-0 top-[64px] z-40 md:hidden bg-black border-b border-black/10 py-6 px-6 flex flex-col space-y-1"
+            className="fixed inset-x-0 top-[72px] z-40 md:hidden bg-white border-b border-black/10 py-6 px-6 flex flex-col space-y-1"
           >
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={`#${link.href}`}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-base font-medium py-3 border-b border-black/5 dark:border-white/5"
-                style={
-                  activeSection === link.href
-                    ? { color: "#5711C5" }
-                    : { color: "inherit" }
-                }
+                className="text-base font-medium py-3 border-b border-black/5 text-black/70"
+                style={activeSection === link.href ? { color: "#5711C5" } : {}}
               >
                 {link.name}
               </a>
@@ -138,7 +128,7 @@ export default function Navbar() {
             <div className="pt-4">
               <a href="#contact" onClick={(e) => handleNavClick(e, "contact")} className="block">
                 <button
-                  className="w-full h-auto object-cover rounded-sm font-semibold text-white"
+                  className="w-full py-3 rounded-sm font-semibold text-white"
                   style={{ backgroundColor: "#5711C5" }}
                 >
                   Get Started

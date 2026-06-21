@@ -126,7 +126,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="relative"
+          className="relative hidden lg:block"
         >
           <HeroIllustration />
         </motion.div>
