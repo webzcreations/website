@@ -104,6 +104,11 @@
 	--sidebar-ring: #5711c5;
 }
 
+::selection {
+	background-color: #5711C5;
+	color: #ffffff;
+}
+
 @layer base {
 	* {
 		@apply border-border outline-ring/50;

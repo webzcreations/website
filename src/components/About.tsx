@@ -42,7 +42,7 @@ const team = [
 
 export default function About() {
   return (
-    <section id="about" className="py-28 bg-white dark:bg-black">
+    <section id="about" className="py-28 bg-black">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
@@ -50,30 +50,30 @@ export default function About() {
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-px" style={{ backgroundColor: "#5711C5" }} />
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-black/40 dark:text-white/40">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/40">
                 Our Story
               </span>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-black dark:text-white leading-tight">
+            <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white leading-tight">
               Empowering Brands <br />
               Through Elite <br />
               <span style={{ color: "#5711C5" }}>Engineering.</span>
             </h2>
-            <p className="text-base text-black/50 dark:text-white/50 leading-relaxed max-w-md">
+            <p className="text-base text-white/50 leading-relaxed max-w-md">
               At webZ Creations, we construct digital spaces that combine premium aesthetic design with top-tier performance. We transform complex user flows into simple, engaging, and high-converting journeys.
             </p>
           </div>
 
           {/* Mission Card */}
-          <div className="border border-black/10 dark:border-white/10 p-8 space-y-5">
+          <div className="border border-white/10 p-8 space-y-5">
             <div
               className="w-10 h-10 flex items-center justify-center text-white"
               style={{ backgroundColor: "#5711C5" }}
             >
               <Heart className="h-5 w-5" />
             </div>
-            <h3 className="text-2xl font-bold text-black dark:text-white">Our Mission</h3>
-            <p className="text-base text-black/50 dark:text-white/50 leading-relaxed">
+            <h3 className="text-2xl font-bold text-white">Our Mission</h3>
+            <p className="text-base text-white/50 leading-relaxed">
               To build modern, ultra-responsive, and optimized systems for ambitious companies. We believe every pixel must contribute to brand authority, loading speeds, and operational success.
             </p>
           </div>
@@ -81,8 +81,8 @@ export default function About() {
 
         {/* Values */}
         <div className="mb-24">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-black/30 dark:text-white/30 mb-10">Core Values</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-black/10 dark:bg-white/10">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/30 mb-10">Core Values</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10">
             {values.map((v, i) => {
               const Icon = v.icon
               return (
@@ -92,7 +92,7 @@ export default function About() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="bg-white dark:bg-black p-8 space-y-4"
+                  className="bg-black p-8 space-y-4"
                 >
                   <div
                     className="w-10 h-10 flex items-center justify-center text-white"
@@ -100,8 +100,8 @@ export default function About() {
                   >
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h4 className="text-base font-bold text-black dark:text-white">{v.title}</h4>
-                  <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed">{v.description}</p>
+                  <h4 className="text-base font-bold text-white">{v.title}</h4>
+                  <p className="text-sm text-white/50 leading-relaxed">{v.description}</p>
                 </motion.div>
               )
             })}
@@ -110,8 +110,8 @@ export default function About() {
 
         {/* Team */}
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-black/30 dark:text-white/30 mb-10">The Team</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-black/10 dark:bg-white/10">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/30 mb-10">The Team</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10">
             {team.map((member, i) => (
               <motion.div
                 key={i}
@@ -119,7 +119,7 @@ export default function About() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="bg-white dark:bg-black p-8 space-y-4"
+                className="bg-black p-8 space-y-4"
               >
                 <div
                   className="w-16 h-16 flex items-center justify-center text-xl font-black text-white"
@@ -128,10 +128,10 @@ export default function About() {
                   {member.initials}
                 </div>
                 <div>
-                  <h4 className="text-base font-bold text-black dark:text-white">{member.name}</h4>
-                  <p className="text-xs font-semibold text-black/40 dark:text-white/40 mt-0.5">{member.role}</p>
+                  <h4 className="text-base font-bold text-white">{member.name}</h4>
+                  <p className="text-xs font-semibold text-white/40 mt-0.5">{member.role}</p>
                 </div>
-                <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed">{member.bio}</p>
+                <p className="text-sm text-white/50 leading-relaxed">{member.bio}</p>
               </motion.div>
             ))}
           </div>

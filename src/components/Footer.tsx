@@ -29,11 +29,11 @@ const footerLinks = [
 ];
 
 const services = [
-	"Website Development",
-	"SEO Optimization",
-	"App Engineering",
-	"CRM Automations",
-	"UI/UX Strategy",
+	{ name: "Website Development", path: "/services/website-development" },
+	{ name: "SEO Optimization", path: "/services/seo-optimization" },
+	{ name: "App Engineering", path: "/services/app-engineering" },
+	{ name: "CRM Automations", path: "/services/crm-automations" },
+	{ name: "UI/UX Strategy", path: "/services/ui-ux-strategy" },
 ];
 
 export default function Footer() {
@@ -145,8 +145,13 @@ export default function Footer() {
 					</h4>
 					<ul className='space-y-2.5'>
 						{services.map((s) => (
-							<li key={s} className='text-sm text-white/50'>
-								{s}
+							<li key={s.name}>
+								<Link
+									to={s.path}
+									className='text-sm text-white/50 hover:text-white transition-colors'
+								>
+									{s.name}
+								</Link>
 							</li>
 						))}
 					</ul>
