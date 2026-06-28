@@ -1,12 +1,19 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { ArrowLeft } from "lucide-react"
+import SEOHead from "../components/SEOHead"
 import TermsConditions from "../components/TermsConditions"
 import Footer from "../components/Footer"
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-sans selection:text-white" style={{ '--tw-selection-color': '#5711C5' } as React.CSSProperties}>
+    <>
+      <SEOHead
+        title="Terms & Conditions"
+        description="Terms and Conditions for WebZ Creations. Review the rules, guidelines, and legal terms governing the use of our website and services."
+        keywords="terms and conditions, terms of service, WebZ Creations terms"
+      />
+      <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-sans selection:text-white" style={{ '--tw-selection-color': '#5711C5' } as React.CSSProperties}>
       <div className="sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-black/10 dark:border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
           <Link
@@ -23,6 +30,7 @@ export default function TermsPage() {
       </div>
       <TermsConditions />
       <Footer />
-    </div>
+      </div>
+    </>
   )
 }

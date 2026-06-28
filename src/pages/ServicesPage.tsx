@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { ArrowLeft, Globe, Search, Smartphone, Settings, Palette } from "lucide-react"
+import SEOHead from "../components/SEOHead"
 import Footer from "../components/Footer"
 
 const services = [
@@ -68,7 +69,13 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-sans">
+    <>
+      <SEOHead
+        title="Services"
+        description="WebZ Creations offers end-to-end digital services: Website Development, SEO Optimization, App Engineering, CRM Automations, and UI/UX Strategy. Tailored solutions to grow your business."
+        keywords="web development services, SEO services, app development services, CRM automation, UI UX design agency, digital agency services"
+      />
+      <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-sans">
       {/* Top Bar */}
       <div className="sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-black/10 dark:border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
@@ -180,6 +187,7 @@ export default function ServicesPage() {
       </section>
 
       <Footer />
-    </div>
+      </div>
+    </>
   )
 }

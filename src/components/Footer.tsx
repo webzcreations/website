@@ -21,7 +21,6 @@ const handleScroll = (
 const footerLinks = [
 	{ label: "Home", href: "home" },
 	{ label: "Services", href: "services" },
-	{ label: "Portfolio", href: "portfolio" },
 	{ label: "About", href: "about" },
 	{ label: "Contact", href: "contact" },
 	{ label: "Privacy Policy", href: "privacy" },
@@ -75,12 +74,8 @@ export default function Footer() {
 					<div className='flex space-x-4 pt-2'>
 						{[
 							{
-								label: "Twitter",
-								path: "M4 4l11.733 16h4.267l-11.733 -16zM4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772",
-							},
-							{
-								label: "GitHub",
-								path: "M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22",
+								label: "Instagram",
+								path: "M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 0 2.5 1.25 1.25 0 0 1 0-2.5M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z",
 							},
 							{
 								label: "LinkedIn",
@@ -89,7 +84,13 @@ export default function Footer() {
 						].map(({ label, path }) => (
 							<a
 								key={label}
-								href='#'
+								href={
+									label === "Instagram"
+										? "https://www.instagram.com/webz_creations"
+										: "https://www.linkedin.com/company/webzcreations/"
+								}
+								target='_blank'
+								rel='noopener noreferrer'
 								className='text-white/30 hover:text-white transition-colors'
 							>
 								<svg
@@ -162,16 +163,10 @@ export default function Footer() {
 			<div className='border-t border-white/10 max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/30'>
 				<p>© {new Date().getFullYear()} webZ Creations. All rights reserved.</p>
 				<div className='flex space-x-6'>
-					<Link
-						to="/privacy"
-						className='hover:text-white transition-colors'
-					>
+					<Link to='/privacy' className='hover:text-white transition-colors'>
 						Privacy Policy
 					</Link>
-					<Link
-						to="/terms"
-						className='hover:text-white transition-colors'
-					>
+					<Link to='/terms' className='hover:text-white transition-colors'>
 						Terms of Service
 					</Link>
 				</div>

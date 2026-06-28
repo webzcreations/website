@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom"
 import { ArrowLeft, Settings } from "lucide-react"
+import SEOHead from "../components/SEOHead"
 import Footer from "../components/Footer"
 
 export default function CRMAutomationsPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-sans">
+    <>
+      <SEOHead
+        title="CRM Automations"
+        description="WebZ Creations builds custom CRM systems with workflow automation, sales pipeline tracking, analytics dashboards, and third-party integrations to streamline your operations."
+        keywords="CRM development, CRM automation, custom CRM, sales pipeline, workflow automation, lead tracking, CRM software"
+      />
+      <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-sans">
       <div className="sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-black/10 dark:border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
           <Link to="/services" className="flex items-center space-x-2 text-sm font-semibold text-black/60 dark:text-white/60 hover:text-[#5711C5] transition-colors">
@@ -77,6 +84,7 @@ export default function CRMAutomationsPage() {
       </section>
 
       <Footer />
-    </div>
+      </div>
+    </>
   )
 }

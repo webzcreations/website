@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom"
 import { ArrowLeft, Palette } from "lucide-react"
+import SEOHead from "../components/SEOHead"
 import Footer from "../components/Footer"
 
 export default function UIUXStrategyPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-sans">
+    <>
+      <SEOHead
+        title="UI/UX Strategy"
+        description="WebZ Creations delivers intuitive UI/UX design through user research, wireframing, prototyping, usability testing, and accessibility compliance (WCAG)."
+        keywords="UI UX design, UX strategy, user experience design, user interface design, wireframing, prototyping, usability testing, WCAG accessibility"
+      />
+      <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-sans">
       <div className="sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-black/10 dark:border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
           <Link to="/services" className="flex items-center space-x-2 text-sm font-semibold text-black/60 dark:text-white/60 hover:text-[#5711C5] transition-colors">
@@ -77,6 +84,7 @@ export default function UIUXStrategyPage() {
       </section>
 
       <Footer />
-    </div>
+      </div>
+    </>
   )
 }

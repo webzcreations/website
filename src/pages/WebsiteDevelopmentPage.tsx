@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom"
 import { ArrowLeft, Globe } from "lucide-react"
+import SEOHead from "../components/SEOHead"
 import Footer from "../components/Footer"
 
 export default function WebsiteDevelopmentPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-sans">
+    <>
+      <SEOHead
+        title="Website Development"
+        description="WebZ Creations builds stunning, high-performance websites using React and Next.js. Custom development, responsive design, SEO optimization, and CMS integration."
+        keywords="website development, React development, Next.js agency, custom website, responsive web design, CMS integration, web development company"
+      />
+      <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-sans">
       <div className="sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-black/10 dark:border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
           <Link
@@ -83,6 +90,7 @@ export default function WebsiteDevelopmentPage() {
       </section>
 
       <Footer />
-    </div>
+      </div>
+    </>
   )
 }

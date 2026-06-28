@@ -35,7 +35,6 @@ export default function Hero() {
 					{/* Label */}
 					<div className='flex items-center space-x-3'>
 						<div className='w-8 h-px bg-white/30' />
-					
 					</div>
 
 					{/* Headline */}
@@ -60,11 +59,6 @@ export default function Hero() {
 							>
 								<span>Start a Project</span>
 								<ArrowRight className='h-4 w-4' />
-							</button>
-						</a>
-						<a href='#portfolio' onClick={(e) => handleScroll(e, "portfolio")}>
-							<button className='px-7 py-3.5 text-sm font-semibold text-white border border-white/20'>
-								View Work
 							</button>
 						</a>
 					</div>
