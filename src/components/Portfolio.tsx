@@ -97,7 +97,7 @@ export default function Portfolio() {
         </div>
 
         {/* Project Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 bg-black">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
               <motion.div
@@ -107,7 +107,7 @@ export default function Portfolio() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="bg-black group cursor-pointer"
+                className="bg-black group cursor-pointer outline outline-1 outline-white/10"
                 onClick={() => setActiveProject(project)}
               >
                 {/* Image */}

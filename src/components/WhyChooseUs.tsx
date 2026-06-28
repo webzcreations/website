@@ -85,6 +85,10 @@ export default function WhyChooseUs() {
               </motion.div>
             )
           })}
+          {/* Fill empty grid cell (5 items in 3-col grid = 1 empty) */}
+          {Array.from({ length: 6 - reasons.length }).map((_, i) => (
+            <div key={`empty-${i}`} className="bg-black hidden md:block" />
+          ))}
         </div>
       </div>
     </section>
